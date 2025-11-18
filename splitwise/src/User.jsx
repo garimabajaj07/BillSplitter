@@ -1,4 +1,4 @@
-export default function User({ handleSubmit, handleChange, input, userList, totalBill, total, splitAmt }) {
+export default function User({ handleSubmit, handleChange, input }) {
     return (
         <div className="container">
             <h1> Bill Splitter</h1>
@@ -18,25 +18,13 @@ export default function User({ handleSubmit, handleChange, input, userList, tota
                     value={input.Expense}
                     name="Expense"
                 />
+                <input type="number"
+                    placeholder="Enter your share percentage..."
+                    onChange={handleChange}
+                    value={input.SharePercent}
+                    name="SharePercent" />
                 <button type="submit" className="btn">Add Expense</button>
             </form>
-
-            <ul className="list">
-                {userList.map((obj) => (
-                    <li key={obj.id}>
-                        <span className="name">{obj.userName}</span>
-                        <span className="price">₹{obj.userExpense}</span>
-                    </li>
-                ))}
-            </ul>
-
-            <button className="btn calc-btn" onClick={totalBill}>Calculate Bill</button>
-
-            <div className="expenseSummary">
-                <p>Total Bill:₹{total}</p>
-                <p>No. of People:{userList.length}</p>
-                <p>Share per Person: ₹{splitAmt}</p>
-            </div>
         </div>
     );
 }
